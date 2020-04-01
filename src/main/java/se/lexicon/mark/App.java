@@ -16,6 +16,7 @@ public class App {
 
         File JavaTest = new File("C://Downloads/JavaTest.txt");
         String s = read(JavaTest);
+        System.out.println(s);
     }
 
     private static String read(File JavaTest) {
@@ -33,7 +34,7 @@ public class App {
          catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println(stringBuilder);
+
          return stringBuilder.toString();
     }
 
