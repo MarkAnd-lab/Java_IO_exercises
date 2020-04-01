@@ -1,5 +1,8 @@
 package se.lexicon.mark;
 
+//3. In Java create a Collection that contains at least five String objects.
+//a. Then create a method that write each String object from the collection into a textfile.
+
 import java.io.*;
 import java.util.*;
 
