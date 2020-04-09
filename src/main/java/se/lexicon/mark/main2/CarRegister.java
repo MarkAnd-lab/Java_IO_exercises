@@ -1,5 +1,7 @@
 package se.lexicon.mark.main2;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.UUID;
@@ -9,6 +11,7 @@ public class CarRegister implements Serializable {
     private String regNumber;
     private String brand;
     private String model;
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     private LocalDate regDate;
     private String owner;
 
@@ -20,52 +23,49 @@ public class CarRegister implements Serializable {
         this.regDate = regDate;
         this.owner = owner;
     }
+    public CarRegister(){
+
+    }
 
     public UUID getCarID() {
         return carID;
     }
 
-    public void setCarID(UUID carID) {
-        this.carID = carID;
-    }
 
     public String getRegNumber() {
         return regNumber;
     }
 
-    public void setRegNumber(String regNumber) {
-        this.regNumber = regNumber;
-    }
 
     public String getBrand() {
         return brand;
     }
 
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
 
     public String getModel() {
         return model;
     }
 
-    public void setModel(String model) {
-        this.model = model;
-    }
 
     public LocalDate getRegDate() {
         return regDate;
     }
 
-    public void setRegDate(LocalDate regDate) {
-        this.regDate = regDate;
-    }
 
     public String getOwner() {
         return owner;
     }
 
-    public void setOwner(String owner) {
-        this.owner = owner;
+    @Override
+    public String toString() {
+        return "CarRegister{" +
+                "carID=" + carID +
+                ", regNumber='" + regNumber + '\'' +
+                ", brand='" + brand + '\'' +
+                ", model='" + model + '\'' +
+                ", regDate=" + regDate +
+                ", owner='" + owner + '\'' +
+                '}';
     }
 }
+

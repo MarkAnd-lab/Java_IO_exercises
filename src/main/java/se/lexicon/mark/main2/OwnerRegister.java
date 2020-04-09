@@ -1,18 +1,26 @@
 package se.lexicon.mark.main2;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 
 public class OwnerRegister implements Serializable {
+    private static int counter = 0;
 
     private int ownerID;
     private String name;
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     private LocalDate dateOfBirth;
 
+
     public OwnerRegister(String name, LocalDate dateOfBirth) {
-        this.ownerID = ownerID;
+        this.ownerID = ++counter;
         this.name = name;
         this.dateOfBirth = dateOfBirth;
+
+    }
+    public OwnerRegister(){
 
     }
 
@@ -20,25 +28,14 @@ public class OwnerRegister implements Serializable {
         return ownerID;
     }
 
-    public void setOwnerID(int ownerID) {
-        this.ownerID = ownerID;
-    }
-
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(LocalDate dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
 
     @Override
     public String toString() {
