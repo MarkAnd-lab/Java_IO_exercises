@@ -1,5 +1,6 @@
 package se.lexicon.mark.main2;
 
+import java.io.File;
 import java.time.LocalDate;
 import java.util.*;
 
@@ -11,9 +12,10 @@ public class MainRegister {
         List<OwnerRegister> ownerRegisterList = Arrays.asList(new OwnerRegister("Marek Kowalski", LocalDate.parse("1974-03-23")),
                     new OwnerRegister("Carolina Kowalski", LocalDate.parse("2008-06-19")));
 
-        JsonIO jsonIO = new JsonIO();
+        //JsonIO jsonIO = new JsonIO();
 
-
+        Object jasonIO = new JsonIO();
+        boolean success = ((JsonIO) jasonIO).writeToJson(carRegisterList, new File("src/main/resources/cars.json"));
 
 
             }
