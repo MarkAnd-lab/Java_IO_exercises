@@ -1,6 +1,7 @@
 package se.lexicon.mark.main2;
 
 import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -26,17 +27,30 @@ public class JsonIO {
 
         try {
             objectMapper.writeValue(name, source);
+            success = true;
 
-        } catch (JsonGenerationException e) {
-            e.printStackTrace();
-        } catch (JsonMappingException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+             } catch (IOException e) {
             e.printStackTrace();
         }
         return success;
     }
-    public <T> List<T> readFromJson(File name, Supplier<List<T>> supplier){
 
-    }
+    public <T> List<T> readFromJson(File name, Supplier<List<T>> supplier) {
+        JavaType type = null;
+        if (name.getName().contains("cars")) {
+            type = objectMapper.getTypeFactory().constructCollectionType(List.class, CarRegister.class);
+        } else if (name.getName().contains("owners")) {
+            type = objectMapper.getTypeFactory().
+                    constructCollectionType(List.class, OwnerRegister.class);
+        }
+            List<T> deSerializedList = supplier.get();
+            try {
+                deSerializedList = objectMapper.readValue(name, type);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return deSerializedList;
+        }
+
 }
+

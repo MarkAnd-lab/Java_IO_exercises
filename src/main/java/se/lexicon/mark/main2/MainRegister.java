@@ -16,7 +16,14 @@ public class MainRegister {
 
         Object jasonIO = new JsonIO();
         boolean success = ((JsonIO) jasonIO).writeToJson(carRegisterList, new File("src/main/resources/cars.json"));
+        System.out.println("Wrote cars to file success = " + success);
+        success = ((JsonIO) jasonIO).writeToJson(ownerRegisterList, new File("src/main/resources/owners.json"));
+        System.out.println("Wrote owners to file success = " + success);
 
+        List<CarRegister> jsonCars = ((JsonIO) jasonIO).readFromJson(new File("src/main/resources/cars.json"), ArrayList::new);
 
-            }
-        }
+        List<OwnerRegister>jsonOwners = ((JsonIO) jasonIO).readFromJson(new File("src/main/resources/owners.json"), ArrayList::new);
+        jsonOwners.forEach(System.out::println);
+        jsonCars.forEach(System.out::println);
+    }
+}
