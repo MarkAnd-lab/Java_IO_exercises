@@ -15,14 +15,14 @@ public class MainRegister {
         //JsonIO jsonIO = new JsonIO(); Test
 
         Object jasonIO = new JsonIO();
-        boolean success = ((JsonIO) jasonIO).writeToJson(carRegisterList, new File("src/main/resources/cars.json"));
+        boolean success = ((JsonIO) jasonIO).writeToJson(carRegisterList, new File("C://downloads/cars.txt"));
         System.out.println("Wrote cars to file success = " + success);
-        success = ((JsonIO) jasonIO).writeToJson(ownerRegisterList, new File("src/main/resources/owners.json"));
+        success = ((JsonIO) jasonIO).writeToJson(ownerRegisterList, new File("C://downloads/owner.txt"));
         System.out.println("Wrote owners to file success = " + success);
 
-        List<CarRegister> jsonCars = ((JsonIO) jasonIO).readFromJson(new File("src/main/resources/cars.json"), ArrayList::new);
+        List<CarRegister> jsonCars = ((JsonIO) jasonIO).readFromJson(new File("C://downloads/cars.txt"), ArrayList::new);
 
-        List<OwnerRegister>jsonOwners = ((JsonIO) jasonIO).readFromJson(new File("src/main/resources/owners.json"), ArrayList::new);
+        List<OwnerRegister>jsonOwners = ((JsonIO) jasonIO).readFromJson(new File("C://downloads/owner.txt"), ArrayList::new);
         jsonOwners.forEach(System.out::println);
         jsonCars.forEach(System.out::println);
     }
